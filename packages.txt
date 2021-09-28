@@ -1,1 +1,1 @@
-tensorflow
+tensorflow2.6.0
