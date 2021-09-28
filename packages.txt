@@ -1,1 +1,2 @@
-tensorfllow2.6.0-dev
+freeglut3-dev
+libgtk2.0-dev
