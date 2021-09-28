@@ -10,9 +10,9 @@ category = ['Body shaming', 'Geopolitical', 'Hate speech', 'Political', 'Profani
 
 def predict(comm, catg):
     model = tf.keras.models.load_model(
-        "C:\\Users\\ahnaf\\PycharmProjects\\Test-1\\saved_model\\CyberbullyingDetection.h5")
+        "CyberbullyingDetection.h5")
     # model.summary()
-    with open('C:\\Users\\ahnaf\\PycharmProjects\\Test-1\\tokenizer.pickle', 'rb') as handle:
+    with open('tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
     sentence = comm
     sequences = tokenizer.texts_to_sequences(sentence)
