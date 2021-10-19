@@ -37,7 +37,7 @@ def predict(comm, catg):
 catgr = 0
 
 st.title("Cyberbullying Detection using NLP")
-comment = st.text_area("Enter a comment")
+comment = st.text_area("Enter a comment in Bangla text")
 
 if st.button("Analyze"):
     with st.spinner("Analyzing the text …"):
