@@ -5,18 +5,21 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-category = ['Body shaming', 'Geopolitical', 'Hate speech', 'Political', 'Profanity', 'Religious', 'Sexual harassment']
+category = ['Body shaming', 'Geopolitical', 'Hate speech', 'Political', 'Profanity', 'Religious', 'Sexual harassment',
+            'Troll']
 
 
 def predict(comm, catg):
     model = load_model(
         "CyberbullyingDetection.h5")
     # model.summary()
+
     with open('tokenizer.pickle', 'rb') as handle:
         tokenizer = pickle.load(handle)
-    sentence = comm
+
+    sentence = [comm]
     sequences = tokenizer.texts_to_sequences(sentence)
-    padded = pad_sequences(sequences, maxlen=50, padding='post', truncating='post')
+    padded = pad_sequences(sequences, maxlen=1005, padding='post', truncating='post')
     prediction_main = model.predict(padded)
 
     i = 0
@@ -39,10 +42,10 @@ comment = st.text_area("Enter a comment")
 if st.button("Analyze"):
     with st.spinner("Analyzing the text …"):
         prediction = predict(comment, catgr)
-        if prediction[0] > 0.6:
+        if prediction[0] > 0.8:
             st.success("This comment contains {:.2%} ".format(prediction[0]) + category[prediction[1]])
             # st.balloons()
-        elif 0.4 < prediction[0] < 0.6:
+        elif 0.6 < prediction[0] < 0.8:
             st.error("This might be a cyberbullying comment which contains {:.0%} ".format(prediction[0]) + category[
                 prediction[1]])
         else:
