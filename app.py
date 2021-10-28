@@ -5,8 +5,7 @@ import streamlit as st
 from tensorflow.keras.models import load_model
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-category = ['Body shaming', 'Geopolitical', 'Hate speech', 'Political', 'Profanity', 'Religious', 'Sexual harassment',
-            'Troll']
+category = ['Geopolitical', 'Hate speech', 'Personal attack', 'Political', 'Profanity', 'Religious', 'Sexual harassment']
 
 
 def predict(comm, catg):
