@@ -18,7 +18,7 @@ def predict(comm, catg):
 
     sentence = [comm]
     sequences = tokenizer.texts_to_sequences(sentence)
-    padded = pad_sequences(sequences, maxlen=1005, padding='post', truncating='post')
+    padded = pad_sequences(sequences, maxlen=1334, padding='post', truncating='post')
     prediction_main = model.predict(padded)
 
     i = 0
