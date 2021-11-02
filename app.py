@@ -23,10 +23,12 @@ if st.button("Detect"):
     with st.spinner("Analyzing the text …"):
         prediction = predict(comment, percentage)
         if prediction[1] > 80:
-            st.success("This comment contains " + str(prediction[1]) + "% " + str(prediction[0]))
+            st.success('This comment contains "' + str(prediction[0]) + '" cyberbullying with a probability of ' + str(
+                prediction[1]) + "%")
             # st.balloons()
-        elif 60 < prediction[1] < 80:
-            st.error("This might be a cyberbullying comment which contains " + str(prediction[1]) + "% " + str(
-                prediction[0]))
+        elif 60 > prediction[1] < 80:
+            st.error(
+                'This comment may contains "' + str(prediction[0]) + '" cyberbullying with a probability of ' + str(
+                    prediction[1]) + "%")
         else:
             st.warning("This is not a cyberbullying comment")
